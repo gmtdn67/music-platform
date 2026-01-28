@@ -48,7 +48,7 @@ const mongoose = __importStar(require("mongoose"));
 let Track = class Track {
     name;
     artist;
-    track;
+    text;
     listens;
     picture;
     audio;
@@ -66,7 +66,7 @@ __decorate([
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
-], Track.prototype, "track", void 0);
+], Track.prototype, "text", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", Number)

@@ -1,13 +1,13 @@
 import * as mongoose from 'mongoose';
-export type TrackDocument = Track & Document;
+export type TrackDocument = mongoose.HydratedDocument<Track>;
 export declare class Track {
     name: string;
     artist: string;
-    track: string;
+    text: string;
     listens: number;
     picture: string;
     audio: string;
-    comments: Comment[];
+    comments: mongoose.Schema.Types.ObjectId[];
 }
 export declare const TrackSchema: mongoose.Schema<Track, mongoose.Model<Track, any, any, any, (mongoose.Document<unknown, any, Track, any, mongoose.DefaultSchemaOptions> & Track & {
     _id: mongoose.Types.ObjectId;
@@ -46,7 +46,7 @@ export declare const TrackSchema: mongoose.Schema<Track, mongoose.Model<Track, a
     }, "id"> & {
         id: string;
     }> | undefined;
-    track?: mongoose.SchemaDefinitionProperty<string, Track, mongoose.Document<unknown, {}, Track, {
+    text?: mongoose.SchemaDefinitionProperty<string, Track, mongoose.Document<unknown, {}, Track, {
         id: string;
     }, mongoose.ResolveSchemaOptions<mongoose.DefaultSchemaOptions>> & Omit<Track & {
         _id: mongoose.Types.ObjectId;
@@ -82,7 +82,7 @@ export declare const TrackSchema: mongoose.Schema<Track, mongoose.Model<Track, a
     }, "id"> & {
         id: string;
     }> | undefined;
-    comments?: mongoose.SchemaDefinitionProperty<Comment[], Track, mongoose.Document<unknown, {}, Track, {
+    comments?: mongoose.SchemaDefinitionProperty<mongoose.Schema.Types.ObjectId[], Track, mongoose.Document<unknown, {}, Track, {
         id: string;
     }, mongoose.ResolveSchemaOptions<mongoose.DefaultSchemaOptions>> & Omit<Track & {
         _id: mongoose.Types.ObjectId;

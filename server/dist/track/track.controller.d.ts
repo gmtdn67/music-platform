@@ -1,6 +1,13 @@
+import { TrackService } from './track.service';
+import { CreateTrackDto } from './dto/create-track.dto';
+import * as mongoose from 'mongoose';
+import { CreateCommentDto } from './dto/create-comment-dto';
 export declare class TrackController {
-    create(): void;
-    getAll(): string;
-    getOne(): void;
-    delete(): void;
+    private trackService;
+    constructor(trackService: TrackService);
+    create(dto: CreateTrackDto): Promise<import("./schemas/track.schema").Track>;
+    getAll(): Promise<import("./schemas/track.schema").Track[]>;
+    getOne(id: mongoose.ObjectId): Promise<import("./schemas/track.schema").Track>;
+    delete(id: mongoose.ObjectId): Promise<mongoose.Schema.Types.ObjectId | null>;
+    addComment(dto: CreateCommentDto): Promise<import("./schemas/comment.schema").Comment>;
 }
