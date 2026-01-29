@@ -51,13 +51,15 @@ const track_service_1 = require("./track.service");
 const create_track_dto_1 = require("./dto/create-track.dto");
 const mongoose = __importStar(require("mongoose"));
 const create_comment_dto_1 = require("./dto/create-comment-dto");
+const platform_express_1 = require("@nestjs/platform-express");
 let TrackController = class TrackController {
     trackService;
     constructor(trackService) {
         this.trackService = trackService;
     }
-    create(dto) {
-        return this.trackService.create(dto);
+    create(files, dto) {
+        const { picture, audio } = files;
+        return this.trackService.create(dto, picture[0], audio[0]);
     }
     getAll() {
         return this.trackService.getAll();
@@ -75,9 +77,14 @@ let TrackController = class TrackController {
 exports.TrackController = TrackController;
 __decorate([
     (0, common_1.Post)(),
-    __param(0, (0, common_1.Body)()),
+    (0, common_1.UseInterceptors)((0, platform_express_1.FileFieldsInterceptor)([
+        { name: 'picture', maxCount: 1 },
+        { name: 'audio', maxCount: 1 },
+    ])),
+    __param(0, (0, common_1.UploadedFiles)()),
+    __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_track_dto_1.CreateTrackDto]),
+    __metadata("design:paramtypes", [Object, create_track_dto_1.CreateTrackDto]),
     __metadata("design:returntype", void 0)
 ], TrackController.prototype, "create", null);
 __decorate([

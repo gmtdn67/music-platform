@@ -5,7 +5,7 @@ import { CreateCommentDto } from './dto/create-comment-dto';
 export declare class TrackController {
     private trackService;
     constructor(trackService: TrackService);
-    create(dto: CreateTrackDto): Promise<import("./schemas/track.schema").Track>;
+    create(files: any, dto: CreateTrackDto): Promise<import("./schemas/track.schema").Track>;
     getAll(): Promise<import("./schemas/track.schema").Track[]>;
     getOne(id: mongoose.ObjectId): Promise<import("./schemas/track.schema").Track>;
     delete(id: mongoose.ObjectId): Promise<mongoose.Schema.Types.ObjectId | null>;

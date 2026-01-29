@@ -3,11 +3,13 @@ import { Model, ObjectId } from 'mongoose';
 import { CommentDocument, Comment } from './schemas/comment.schema';
 import { CreateTrackDto } from './dto/create-track.dto';
 import { CreateCommentDto } from './dto/create-comment-dto';
+import { FileService } from 'src/file/file.service';
 export declare class TrackService {
     private trackModel;
     private commentModel;
-    constructor(trackModel: Model<TrackDocument>, commentModel: Model<CommentDocument>);
-    create(dto: CreateTrackDto): Promise<Track>;
+    private fileService;
+    constructor(trackModel: Model<TrackDocument>, commentModel: Model<CommentDocument>, fileService: FileService);
+    create(dto: CreateTrackDto, picture: any, audio: any): Promise<Track>;
     getAll(): Promise<Track[]>;
     getOne(id: ObjectId): Promise<Track>;
     delete(id: ObjectId): Promise<ObjectId | null>;

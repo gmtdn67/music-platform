@@ -6,21 +6,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppModule = void 0;
+exports.FileModule = void 0;
 const common_1 = require("@nestjs/common");
-const track_module_1 = require("./track/track.module");
-const mongoose_1 = require("@nestjs/mongoose");
-const file_module_1 = require("./file/file.module");
-let AppModule = class AppModule {
+const file_service_1 = require("./file.service");
+let FileModule = class FileModule {
 };
-exports.AppModule = AppModule;
-exports.AppModule = AppModule = __decorate([
+exports.FileModule = FileModule;
+exports.FileModule = FileModule = __decorate([
     (0, common_1.Module)({
-        imports: [
-            track_module_1.TrackModule,
-            mongoose_1.MongooseModule.forRoot('mongodb+srv://admin:admin@cluster0.x1nisfj.mongodb.net/music-platform=Cluster0'),
-            file_module_1.FileModule,
-        ],
+        providers: [file_service_1.FileService],
     })
-], AppModule);
-//# sourceMappingURL=app.module.js.map
+], FileModule);
+//# sourceMappingURL=file.module.js.map
