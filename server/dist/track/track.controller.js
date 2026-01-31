@@ -64,6 +64,9 @@ let TrackController = class TrackController {
     getAll(count, offset) {
         return this.trackService.getAll(count, offset);
     }
+    search(query) {
+        return this.trackService.search(query);
+    }
     getOne(id) {
         return this.trackService.getOne(id);
     }
@@ -98,6 +101,13 @@ __decorate([
     __metadata("design:paramtypes", [Number, Number]),
     __metadata("design:returntype", void 0)
 ], TrackController.prototype, "getAll", null);
+__decorate([
+    (0, common_1.Get)('/search'),
+    __param(0, (0, common_1.Query)('query')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], TrackController.prototype, "search", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),

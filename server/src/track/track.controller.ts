@@ -36,6 +36,11 @@ export class TrackController {
     return this.trackService.getAll(count, offset);
   }
 
+  @Get('/search')
+  search(@Query('query') query: string) {
+    return this.trackService.search(query);
+  }
+
   @Get(':id')
   getOne(@Param('id') id: mongoose.ObjectId) {
     return this.trackService.getOne(id);

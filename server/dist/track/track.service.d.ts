@@ -15,4 +15,5 @@ export declare class TrackService {
     delete(id: ObjectId): Promise<ObjectId | null>;
     addComment(dto: CreateCommentDto): Promise<Comment>;
     listen(id: ObjectId): Promise<void>;
+    search(query: string): Promise<Track[]>;
 }

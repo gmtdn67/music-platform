@@ -40,7 +40,10 @@ let TrackService = class TrackService {
         return track;
     }
     async getAll(count = 10, offset = 0) {
-        const tracks = await this.trackModel.find().skip(offset).limit(count);
+        const tracks = await this.trackModel
+            .find()
+            .skip(Number(offset))
+            .limit(Number(count));
         return tracks;
     }
     async getOne(id) {
@@ -70,6 +73,12 @@ let TrackService = class TrackService {
             track.listens += 1;
         }
         track?.save();
+    }
+    async search(query) {
+        const tracks = await this.trackModel.find({
+            name: { $regex: new RegExp(query, 'i') },
+        });
+        return tracks;
     }
 };
 exports.TrackService = TrackService;
