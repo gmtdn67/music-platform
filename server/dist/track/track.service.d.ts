@@ -10,8 +10,9 @@ export declare class TrackService {
     private fileService;
     constructor(trackModel: Model<TrackDocument>, commentModel: Model<CommentDocument>, fileService: FileService);
     create(dto: CreateTrackDto, picture: any, audio: any): Promise<Track>;
-    getAll(): Promise<Track[]>;
+    getAll(count?: number, offset?: number): Promise<Track[]>;
     getOne(id: ObjectId): Promise<Track>;
     delete(id: ObjectId): Promise<ObjectId | null>;
     addComment(dto: CreateCommentDto): Promise<Comment>;
+    listen(id: ObjectId): Promise<void>;
 }

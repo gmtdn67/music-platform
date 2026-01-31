@@ -39,8 +39,8 @@ let TrackService = class TrackService {
         });
         return track;
     }
-    async getAll() {
-        const tracks = await this.trackModel.find();
+    async getAll(count = 10, offset = 0) {
+        const tracks = await this.trackModel.find().skip(offset).limit(count);
         return tracks;
     }
     async getOne(id) {
@@ -63,6 +63,13 @@ let TrackService = class TrackService {
             await track.save();
         }
         return comment;
+    }
+    async listen(id) {
+        const track = await this.trackModel.findById(id);
+        if (track) {
+            track.listens += 1;
+        }
+        track?.save();
     }
 };
 exports.TrackService = TrackService;

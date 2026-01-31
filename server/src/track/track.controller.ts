@@ -5,6 +5,7 @@ import {
   Get,
   Param,
   Post,
+  Query,
   UploadedFiles,
   UseInterceptors,
 } from '@nestjs/common';
@@ -31,8 +32,8 @@ export class TrackController {
   }
 
   @Get()
-  getAll() {
-    return this.trackService.getAll();
+  getAll(@Query('count') count: number, @Query('offset') offset: number) {
+    return this.trackService.getAll(count, offset);
   }
 
   @Get(':id')
@@ -48,5 +49,10 @@ export class TrackController {
   @Post('/comment')
   addComment(@Body() dto: CreateCommentDto) {
     return this.trackService.addComment(dto);
+  }
+
+  @Post('/listen/:id')
+  listen(@Param('id') id: mongoose.ObjectId) {
+    return this.trackService.listen(id);
   }
 }
