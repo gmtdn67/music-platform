@@ -1,8 +1,7 @@
-import { AppBar, Button, Drawer, Toolbar } from '@mui/material';
-import React, { useState } from 'react';
+import { Button, Drawer, Toolbar } from '@mui/material';
+import  { useState } from 'react';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -10,6 +9,7 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { useRouter } from 'next/router';
+import styles from '../styles/Navbar.module.scss'
 
 const menuItems = [
     {text: 'Главная', href: '/'},
@@ -44,7 +44,7 @@ export const Navbar = () => {
   
   return (
     <div>
-        <Toolbar >
+        <Toolbar className={styles.toolbar} >
             <Button onClick={toggleDrawer(true)}>Open drawer</Button>
         </Toolbar>
         <Drawer open={open} onClose={toggleDrawer(false)}>

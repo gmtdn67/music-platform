@@ -12,6 +12,10 @@ const Index = () => {
 
             <style jsx>
                 {`
+                    * {
+                        margin: 0;
+                        padding: 0;
+                    }
                     .center {
                         margin-top: 150px;
                         display: flex;
