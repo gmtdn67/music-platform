@@ -2,7 +2,7 @@ import MainLayout from '@/layouts/MainLayout';
 
 const Index = () => {
     return (
-        <>  
+        <div >  
             <MainLayout>
                 <div className='center'>
                     <h1>Добро пожаловать!</h1>
@@ -12,20 +12,14 @@ const Index = () => {
 
             <style jsx>
                 {`
-                    * {
+                    .app {
+                        box-sizing: border-box;
                         margin: 0;
                         padding: 0;
                     }
-                    .center {
-                        margin-top: 150px;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                    }
                 `}
             </style>
-        </>
+        </div>
     );
 };
 
