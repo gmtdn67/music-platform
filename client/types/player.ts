@@ -5,6 +5,7 @@ export interface PlayerState {
     volume: number;
     currentTime: number;
     pause: boolean;
+    duration: number;
 }
 
 export enum PlayerActionTypes {

@@ -1,25 +1,28 @@
 import MainLayout from '@/layouts/MainLayout';
+import { theme } from '@/settings/theme';
+import { ThemeProvider } from '@emotion/react';
 
 const Index = () => {
     return (
-        <div >  
+        <>   
             <MainLayout>
-                <div className='center'>
+                <div className="center">
                     <h1>Добро пожаловать!</h1>
-                    <h3>Здесь собраны лучше треки!</h3>
+                    <h3>Здесь собраны лучшие треки!</h3>
                 </div>
             </MainLayout>
 
             <style jsx>
                 {`
-                    .app {
-                        box-sizing: border-box;
-                        margin: 0;
-                        padding: 0;
-                    }
+                    .center {
+                        margin-top: 150px;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
                 `}
             </style>
-        </div>
+        </>
     );
 };
 

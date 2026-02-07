@@ -1,25 +1,30 @@
 import { PlayerAction, PlayerActionTypes, PlayerState } from "@/types/player"
 
 const initialState: PlayerState = {
-
+    active: null,
+    currentTime: 0,
+    duration: 0,
+    volume: 50,
+    pause: true
 }
 
 export const playerReducer = (state = initialState, action: PlayerAction): PlayerState => {
 
     switch (action.type) {
         case PlayerActionTypes.PLAY:
-            return {}
+            return {...state, pause : false}
         case PlayerActionTypes.PAUSE:
-            return {}
+            return {...state, pause : true}
         case PlayerActionTypes.SET_ACTIVE:
-            return {}
+            return {...state, active: action.payload, duration: 0, currentTime: 0}
         case PlayerActionTypes.SET_CURRENT_TIME:
-            return {}
+            return {...state, currentTime: action.payload}
         case PlayerActionTypes.SET_VOLUME:
-            return {}
+            return {...state, volume: action.payload}
         case PlayerActionTypes.SET_DURATION:
-            return {}
+            return {...state, duration: action.payload}
+        default:
+            return state
     }
-    default:
-        return state
+
 }

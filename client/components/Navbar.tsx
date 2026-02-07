@@ -1,4 +1,4 @@
-import { Button, Drawer, Toolbar } from '@mui/material';
+import { AppBar, Button, Drawer, IconButton, MenuItem, Toolbar, Typography } from '@mui/material';
 import  { useState } from 'react';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
@@ -9,7 +9,7 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { useRouter } from 'next/router';
-import styles from '../styles/Navbar.module.scss'
+import MenuIcon from '@mui/icons-material/Menu'
 
 const menuItems = [
     {text: 'Главная', href: '/'},
@@ -26,7 +26,7 @@ export const Navbar = () => {
     };
 
     const DrawerList = (
-    <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
+    <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)} >
       <List>
         {menuItems.map(({text, href}, index) => (
           <ListItem key={href} onClick={() => router.push(href)}>
@@ -44,9 +44,23 @@ export const Navbar = () => {
   
   return (
     <div>
-        <Toolbar className={styles.toolbar} >
-            <Button onClick={toggleDrawer(true)}>Open drawer</Button>
-        </Toolbar>
+        <AppBar position="static" color={"secondary"}>
+          <Toolbar>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+              onClick={toggleDrawer(true)}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              Music platform by gmt9n
+            </Typography>
+          </Toolbar>
+        </AppBar>
         <Drawer open={open} onClose={toggleDrawer(false)}>
             {DrawerList}
         </Drawer>
