@@ -26,7 +26,10 @@ const TrackPage = ({serverTrack}) => {
         }
     }
     return (
-        <MainLayout title={"Track - " + track.artist + ' - ' + track.name}>
+        <MainLayout 
+            title={"Track - " + track.artist + ' - ' + track.name}
+            keywords={'Музыка, артисты, ' + track.name + ', ' + track.artist}
+        >
             <Button 
                 variant='outlined'
                 onClick={() => router.push('/tracks')}
