@@ -13,19 +13,19 @@ let audio;
 export const Player = () => {
     const {currentTime, duration, pause, volume, active} = useTypedSelector(state => state.player)
     const {pauseTrack, playTrack, setVolume, setActiveTrack, setCurrentTime, setDuration} = useActions()
-    const track: ITrack = {_id: '1', name: 'Track 1', artist: "Artist 1", text: 'Text 1', listens: 5, picture: 'http://localhost:5000/image/00f2162f-c8f3-470a-81ca-7a6bed7675b4.jpg', audio: 'http://localhost:5000/audio/27177d21-f0e6-46a7-869e-254669c3dda8.mp3', coments: []}
     
     useEffect(() => {
         if (!audio) {
             audio = new Audio()
         } else {
             setAudio()
+            playTrack()
         }
-    }, [])
+    }, [active])
 
     const setAudio = () => {
         if (active) {
-            audio.src = track.audio
+            audio.src = 'http://localhost:5000/' + active.audio
             audio.volume = volume / 100
             audio.onloadedmetadata = () => {
                 setDuration(Math.ceil(audio.duration))
@@ -55,6 +55,10 @@ export const Player = () => {
         audio.currentTime = Number(e.target.value)
         setCurrentTime(Number(e.target.value))
     }
+
+    if (!active) {
+        return null
+    }
     return (
         <div className={styles.player}>
             <IconButton onClick={play}>
@@ -65,8 +69,8 @@ export const Player = () => {
                 }
             </IconButton>
             <Grid container direction="column" style={{ width: 200, margin: '0 20px'}}>
-                <div>{track.name}</div>
-                <div style={{fontSize: 12, color: 'grey'}}>{track.artist}</div>
+                <div>{active?.name}</div>
+                <div style={{fontSize: 12, color: 'grey'}}>{active?.artist}</div>
             </Grid>
             <TrackProgress left={currentTime} right={duration} onChange={changeCurrentTime}/>
              <VolumeUp style={{margin: 'auto'}}/>

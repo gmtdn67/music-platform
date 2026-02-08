@@ -1,18 +1,23 @@
 import TrackList from '@/components/TrackList';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
 import MainLayout from '@/layouts/MainLayout';
-import { ITrack } from '@/types/tracks';
+import { NextThunkDispatch, wrapper } from '@/store';
+import { fetchTracks } from '@/store/actions-creators/track';
 import { Box, Button, Card, Grid } from '@mui/material';
 import { useRouter } from 'next/router';
 
 const Index = () => {
 
     const router = useRouter()
-    const tracks: ITrack[] = [
-        {_id: '1', name: 'Track 1', artist: "Artist 1", text: 'Text 1', listens: 5, picture: 'http://localhost:5000/image/337ffc43-cfbb-4a99-bf72-d73dbd902ee1.jpg', audio: 'http://localhost:5000/audio/747b29a5-5b3d-4615-8ab0-ebf0e0c07abf.mp3', coments: []},
-        {_id: '2', name: 'Track 2', artist: "Artist 2", text: 'Text 2', listens: 10, picture: 'http://localhost:5000', audio: 'http://localhost:5000', coments: []},
-        {_id: '3', name: 'Track 3', artist: "Artist 3", text: 'Text 3', listens: 15, picture: 'http://localhost:5000', audio: 'http://localhost:5000', coments: []},
-    ]
+    const {tracks, error} = useTypedSelector(state => state.track)
+
+    if (error) {
+        return (
+            <MainLayout>
+                <h1>{error}</h1>
+            </MainLayout>
+        )
+    }
 
     return (
         <MainLayout>
@@ -32,3 +37,9 @@ const Index = () => {
 };
 
 export default Index;
+
+export const getServerSideProps = wrapper.getServerSideProps((store) => async (ctx) => {
+    const dispatch = store.dispatch as NextThunkDispatch
+    await dispatch(await fetchTracks())
+    return { props: {}}
+})

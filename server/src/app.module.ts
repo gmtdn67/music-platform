@@ -8,11 +8,11 @@ import * as path from 'path';
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath: path.resolve(__dirname, '..', 'client'),
+      rootPath: path.resolve(__dirname, '..', 'dist', 'static'),
     }),
     TrackModule,
     MongooseModule.forRoot(
-      'mongodb+srv://admin:admin@cluster0.x1nisfj.mongodb.net/music-platform=Cluster0',
+      'mongodb+srv://admin:admin@cluster0.x1nisfj.mongodb.net/?appName=Cluster0',
     ),
     FileModule,
   ],
