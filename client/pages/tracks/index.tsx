@@ -20,7 +20,7 @@ const Index = () => {
     }
 
     return (
-        <MainLayout>
+        <MainLayout title={"Tracks list"}>
             <Grid container justifyContent='space-between'>
                 <Card style={{width: 900}}>
                     <Box p={3}>

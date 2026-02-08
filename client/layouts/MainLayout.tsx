@@ -1,20 +1,26 @@
 import Navbar from '@/components/Navbar';
 import Player from '@/components/Player';
-import { theme } from '@/settings/theme';
 import { Container, ThemeProvider } from '@mui/material';
+import  Head  from 'next/head';
 import { FC } from 'react';
 
-const MainLayout: FC = ({children}) => {
+interface MainLayoutProps {
+    title?: string
+
+}
+
+const MainLayout: FC<MainLayoutProps> = ({children, title}) => {
     return (
-            <div className='app' style={{backgroundColor: theme.palette.primary.main}}>
-                <ThemeProvider theme={theme}>
-                    <Navbar />
-                    <Container style={{margin: '90px 0'}}>
-                        {children}
-                    </Container>
-                    <Player />
-                </ThemeProvider>
-            </div>
+            <>
+                <Head>
+                    <title>{title || 'Music app by gmt9n'}</title>
+                </Head>
+                <Navbar />
+                <Container style={{margin: '90px 0'}}>
+                    {children}
+                </Container>
+                <Player />
+            </>
     );
 };
 

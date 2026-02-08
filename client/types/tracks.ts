@@ -12,7 +12,7 @@ export interface ITrack {
     listens: number;
     picture: string;
     audio: string;
-    coments: IComment[]
+    comments: IComment[]
 }
 
 export interface TrackState {
