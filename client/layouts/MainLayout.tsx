@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar';
-import Player from '@/components/Player';
-import { Container, ThemeProvider } from '@mui/material';
+import Player from '@/components/widgets/Player';
+import { Sidebar } from '@/components/Sidebar';
+import { Container, Stack } from '@mui/material';
 import  Head  from 'next/head';
 import { FC } from 'react';
 
@@ -21,7 +22,7 @@ const MainLayout: FC<MainLayoutProps> = ({children, title, description, keywords
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                 </Head>
                 <Navbar />
-                <Container style={{margin: '90px 0'}}>
+                <Container style={{margin: '90px 0', display: 'flex', justifyContent: 'center'}}>
                     {children}
                 </Container>
                 <Player />

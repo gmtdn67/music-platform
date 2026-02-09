@@ -3,13 +3,12 @@ import { useTypedSelector } from '@/hooks/useTypedSelector';
 import MainLayout from '@/layouts/MainLayout';
 import { NextThunkDispatch, wrapper } from '@/store';
 import { fetchTracks, searchTracks } from '@/store/actions-creators/track';
-import { Box, Button, Card, Grid, TextField } from '@mui/material';
+import { Box, Button, Card, Grid, TextField, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import { ChangeEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 const Index = () => {
-
     const router = useRouter()
     const {tracks, error} = useTypedSelector(state => state.track)
     const [query, setQuery] = useState<string>('')
@@ -42,7 +41,7 @@ const Index = () => {
                 <Card style={{width: 900}}>
                     <Box p={3}>
                     <Grid container justifyContent='space-between'>
-                        <h1>Список треков</h1>
+                        <Typography fontSize={'40px'}>Список треков</Typography>
                         <Button onClick={ () => router.push('/tracks/create')}>Загрузить</Button>
                     </Grid>
                     </Box>

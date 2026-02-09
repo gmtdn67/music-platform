@@ -44,7 +44,7 @@ export const Navbar = () => {
   
   return (
     <div>
-        <AppBar position="static" color={"secondary"}>
+        <AppBar position="static" color={"primary"}>
           <Toolbar>
             <IconButton
               size="large"
