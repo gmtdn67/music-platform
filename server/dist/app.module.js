@@ -53,10 +53,10 @@ exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
             serve_static_1.ServeStaticModule.forRoot({
-                rootPath: path.resolve(__dirname, '..', 'dist', 'static'),
+                rootPath: path.join(process.cwd(), 'static'),
             }),
             track_module_1.TrackModule,
-            mongoose_1.MongooseModule.forRoot('mongodb+srv://admin:admin@cluster0.x1nisfj.mongodb.net/?appName=Cluster0'),
+            mongoose_1.MongooseModule.forRoot('mongodb+srv://root:st6qmu08@cluster0.exnfsly.mongodb.net/?appName=Cluster0'),
             file_module_1.FileModule,
         ],
     })

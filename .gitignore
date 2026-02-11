@@ -5,6 +5,7 @@
 /client/.next
 /client/node_modules
 /server/node_modules
+/server/static
 # Logs
 logs
 *.log

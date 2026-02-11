@@ -8,11 +8,11 @@ import * as path from 'path';
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath: path.resolve(__dirname, '..', 'dist', 'static'),
+      rootPath: path.join(process.cwd(), 'static'),
     }),
     TrackModule,
     MongooseModule.forRoot(
-      'mongodb+srv://admin:admin@cluster0.x1nisfj.mongodb.net/?appName=Cluster0',
+      'mongodb+srv://root:st6qmu08@cluster0.exnfsly.mongodb.net/?appName=Cluster0',
     ),
     FileModule,
   ],

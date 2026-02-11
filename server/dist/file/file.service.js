@@ -54,7 +54,7 @@ let FileService = class FileService {
         try {
             const fileExtension = file.originalname.split('.').pop();
             const fileName = uuid.v4() + '.' + fileExtension;
-            const filePath = path.resolve(__dirname, '..', 'static', type);
+            const filePath = path.join(process.cwd(), 'static', type);
             if (!fs.existsSync(filePath)) {
                 fs.mkdirSync(filePath, { recursive: true });
             }
