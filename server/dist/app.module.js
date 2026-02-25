@@ -45,6 +45,7 @@ const track_module_1 = require("./track/track.module");
 const mongoose_1 = require("@nestjs/mongoose");
 const file_module_1 = require("./file/file.module");
 const serve_static_1 = require("@nestjs/serve-static");
+require("dotenv/config");
 const path = __importStar(require("path"));
 let AppModule = class AppModule {
 };
@@ -56,7 +57,7 @@ exports.AppModule = AppModule = __decorate([
                 rootPath: path.join(process.cwd(), 'static'),
             }),
             track_module_1.TrackModule,
-            mongoose_1.MongooseModule.forRoot('mongodb+srv://root:st6qmu08@cluster0.exnfsly.mongodb.net/?appName=Cluster0'),
+            mongoose_1.MongooseModule.forRoot(process.env.DATABASE_URL),
             file_module_1.FileModule,
         ],
     })
