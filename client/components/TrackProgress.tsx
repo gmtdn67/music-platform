@@ -23,7 +23,7 @@ export const TrackProgress: FC<TrackProgressProps> = ({left, right, onChange}) =
                 valueLabelDisplay='auto'
                 valueLabelFormat={timeConvertor}
                 sx={{ 
-                    color: theme.palette.primary.light, 
+                    color: theme.palette.primary.dark, 
                     width: '100vw'
                 }}
             />

@@ -10,6 +10,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { useRouter } from 'next/router';
 import MenuIcon from '@mui/icons-material/Menu'
+import { theme } from '@/settings/theme';
 
 const menuItems = [
     {text: 'Главная', href: '/'},
@@ -44,7 +45,7 @@ export const Navbar = () => {
   
   return (
     <div>
-        <AppBar position="static" color={"primary"}>
+        <AppBar position="static" color={'secondary'}>
           <Toolbar>
             <IconButton
               size="large"

@@ -97,7 +97,7 @@ export default function PersistentDrawerLeft() {
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <Button>   
+      <Button   
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
@@ -109,7 +109,7 @@ export default function PersistentDrawerLeft() {
               },
               open && { display: 'none' },
             ]}
-          >
+            >
             <ChevronRightIcon />
       </Button>
       <Drawer

@@ -4,8 +4,8 @@ const core_1 = require("@nestjs/core");
 const app_module_1 = require("./app.module");
 const start = async () => {
     try {
-        const PORT = process.env.PORT || 5000;
         const app = await core_1.NestFactory.create(app_module_1.AppModule);
+        const PORT = 5000;
         app.enableCors();
         await app.listen(PORT, () => console.log(`Server started on PORT ${PORT}`));
     }

@@ -3,7 +3,7 @@ import { useTypedSelector } from '@/hooks/useTypedSelector';
 import MainLayout from '@/layouts/MainLayout';
 import { NextThunkDispatch, wrapper } from '@/store';
 import { fetchTracks, searchTracks } from '@/store/actions-creators/track';
-import { Box, Button, Card, Grid, TextField, Typography } from '@mui/material';
+import { Button, Card, Grid, Stack, TextField, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import { ChangeEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -37,22 +37,20 @@ const Index = () => {
 
     return (
         <MainLayout title={"Tracks list"}>
-            <Grid container justifyContent='space-between'>
-                <Card style={{width: 900}}>
-                    <Box p={3}>
-                    <Grid container justifyContent='space-between'>
-                        <Typography fontSize={'40px'}>Список треков</Typography>
+                <Card sx={{backgroundColor: 'transparent', width: '100%'}}>
+                    <Stack alignItems={'center'} width={'100%'}>
+                        <Typography fontSize={'80px'} color='primary' fontStyle={'italic'}>Мои треки</Typography>
                         <Button onClick={ () => router.push('/tracks/create')}>Загрузить</Button>
-                    </Grid>
-                    </Box>
+                    </Stack>
                     <TextField
-                        fullWidth
-                        value={query}
-                        onChange={search}
+                            fullWidth
+                            value={query}
+                            onChange={search}
+                            placeholder='Поиск трека'
+                            variant='filled'
                     />
                     <TrackList tracks={tracks}/>
                 </Card>
-            </Grid>
         </MainLayout>
     );
 };
